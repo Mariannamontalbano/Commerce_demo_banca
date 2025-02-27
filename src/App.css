@@ -1,0 +1,104 @@
+/* Stile di base per l'app */
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif; /* Font più neutro e leggibile */
+}
+
+/* Logo React */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  transition: transform 0.3s ease-in-out; /* Aggiunto un effetto di transizione */
+}
+
+.App-logo:hover {
+  transform: scale(1.05); /* Effetto ingrandimento al passaggio del mouse */
+}
+
+/* Animazione del logo (solo se non si preferisce ridurre le animazioni) */
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+/* Header dell'app */
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* Link */
+.App-link {
+  color: #61dafb;
+  text-decoration: none;
+}
+.App-link:hover {
+  text-decoration: underline;
+}
+
+/* Keyframe per la rotazione infinita del logo */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Navbar */
+.navbar {
+  background-color: #2b3f6e;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar li {
+  margin: 0;
+}
+
+.navbar a {
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Corpo principale (se necessario) */
+.main-content {
+  padding: 2rem;
+  min-height: calc(100vh - 6rem); /* Esempio di calcolo per lasciare spazio a header/footer */
+}
+
+/* Footer */
+.footer {
+  background-color: #20232a;
+  color: #61dafb;
+  padding: 1rem;
+  text-align: center;
+  position: fixed;  /* Rende il footer fisso */
+  bottom: 0;
+  width: 100%;
+  font-size: 0.9rem;
+}
+

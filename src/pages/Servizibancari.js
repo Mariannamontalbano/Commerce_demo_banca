@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import "../global.css";
+
 const Servizibancari = () => {
-  const{id} = useParams()
-  
   const bankProducts = [
     { id: 1, name: "Conto Corrente Base", shortDesc: "Un conto per le esigenze quotidiane." },
     { id: 2, name: "Conto Deposito", shortDesc: "Ideale per far fruttare i risparmi." },
@@ -11,16 +10,22 @@ const Servizibancari = () => {
   ];
 
   return (
-    <div>
-      <h1>Prodotti Bancari</h1>
-      <ul>
+    <div className="servizi-container">
+      <div className="cover-image">
+        <h1 className="title">Servizi Bancari</h1>
+        <img src="/ser.4.png" alt="Copertura Servizi" className="cover-img" />
+      </div>
+      <div className="servizi-cards">
         {bankProducts.map((product) => (
-          <li key={product.id}>
-            <Link to={`/product/${product.id}`}>{product.name}</Link>
-            <p>{product.shortDesc}</p>
-          </li>
+          <div key={product.id} className="servizi-card">
+            <h2 className="card-title">{product.name}</h2>
+            <p className="card-desc">{product.shortDesc}</p>
+            <Link to={`/product/${product.id}`} className="card-link">
+              Scopri di più
+            </Link>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

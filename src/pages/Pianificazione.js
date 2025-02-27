@@ -23,7 +23,7 @@ function Pianificazione() {
         {/* Quadrante 1 */}
         <div className="pianificazione-quadrante">
           <img src="/pian.1.png" alt="Trovare equilibrio tra rendimento e rischio" className="quadrante-img" />
-          <div className="quadrante-testo">
+          <div className="quadrante-testo-pian">
             <h3>Trovare equilibrio tra rendimento e rischio</h3>
             <p>Strategie diversificate e sviluppate dalle migliori competenze del Gruppo, per cogliere le opportunità dei mercati.</p>
       
@@ -31,13 +31,23 @@ function Pianificazione() {
         </div>
 
         {/* Quadrante 2 */}
-        <div className="pianificazione-quadrante">
+        <div className="pianificazione-quadrante ">
           <img src="/pian.2.png" alt="Risparmiare oggi con uno sguardo sul domani" className="quadrante-img" />
-          <div className="quadrante-testo">
+          <div className="quadrante-testo-pian">
             <h3>Risparmiare oggi con uno sguardo sul domani</h3>
             <p>Piani previdenziali complementari, per mantenere e tutelare l'attuale tenore e stile di vita anche in futuro.</p>
             
           </div>
+          </div>
+
+{/* Quadrante 2 */}
+<div className="pianificazione-quadrante ">
+  <img src="/pian.4.png" alt="Proteggere il futuro e la serenità della tua famiglia" className="quadrante-img" />
+  <div className="quadrante-testo-pian">
+    <h3>Risparmiare oggi con uno sguardo sul domani</h3>
+    <p>La soluzione assicurativa modulabile e flessibile, per salvaguardare il benessere dei tuoi cari.</p>
+    
+  </div>
         </div>
       </div>
     </div>

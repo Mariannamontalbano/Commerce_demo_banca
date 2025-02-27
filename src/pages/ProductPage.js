@@ -4,12 +4,13 @@ import '../global.css';
 
 const ProductPage = () => {
   const { id } = useParams(); // Legge l'ID dall'URL
+
   const bankProducts = [
     { 
       id: "1", 
       name: "Conto Corrente Base", 
       description: "Apri il conto, accredita lo stipendio e hai il 4% annuo lordo sulle somme vincolate a sei mesi1. E le svincoli quando vuoi senza perdere gli interessi maturati.",
-      imageUrl: "/conto_corrente_base.jpg",  // Aggiungi un'immagine
+      imageUrl: "/ser.1.png",  // Immagine di sfondo
       advantages: "Interessi vantaggiosi, operazioni illimitate, accesso online.",
       costs: "Canone mensile: 3€",
       howToOpen: "Puoi aprirlo online o in filiale presentando un documento d'identità."
@@ -18,7 +19,7 @@ const ProductPage = () => {
       id: "2", 
       name: "Conto Deposito", 
       description: "Descrizione dettagliata del conto deposito.",
-      imageUrl: "/images/conto_deposito.jpg",  // Aggiungi un'immagine
+      imageUrl: "/ser.2.png",  // Immagine di sfondo
       advantages: "Tasso di interesse superiore, deposito vincolato.",
       costs: "Canone mensile: 5€.",
       howToOpen: "Richiedi informazioni in filiale."
@@ -27,37 +28,41 @@ const ProductPage = () => {
       id: "3", 
       name: "Prestito Personale", 
       description: "Descrizione dettagliata del prestito personale.",
-      imageUrl: "/images/prestito_personale.jpg",  // Aggiungi un'immagine
+      imageUrl: "/ser.3.png",  // Immagine di sfondo
       advantages: "Tasso d'interesse basso, durata flessibile.",
       costs: "Commissione di apertura: 2% dell'importo richiesto.",
       howToOpen: "Presenta la tua richiesta in filiale o online."
     }
   ];
 
-
-  // Trova il prodotto corrispondente all'ID
   const product = bankProducts.find(p => p.id === id);
-
   if (!product) {
-    return <h2>Prodotto non trovato!</h2>;
+    return <p>Prodotto non trovato</p>;
   }
 
   return (
-    <div className="product-detail">
-      <h1>{product.name}</h1>
-      <img src={product.imageUrl} alt={product.name} style={{ width: "300px", height: "auto" }} /> 
-      <p>{product.description}</p>
-
-      <h2>Vantaggi</h2>
-      <p>{product.advantages}</p>
-
-      <h2>Costi</h2>
-      <p>{product.costs}</p>
-
-      <h2>Come Aprire</h2>
-      <p>{product.howToOpen}</p>
-
-      <Link to="/servizibancari">Torna alla lista</Link>
+    <div 
+      className="product-page"
+      style={{
+        backgroundImage: `url(${product.imageUrl})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh",
+        color: product.id === "2" ? "black" : "white", // Cambia il colore del testo per Conto Deposito
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        padding: "20px"
+      }}
+    >
+      <h1 style={{ fontSize: '3rem', fontWeight: 'bold' }}>{product.name}</h1>
+      <p style={{ fontSize: '1.5rem', lineHeight: '1.6' }}>{product.description}</p>
+      <p style={{ fontSize: '1.5rem', lineHeight: '1.6' }}><strong>Vantaggi:</strong> {product.advantages}</p>
+      <p style={{ fontSize: '1.5rem', lineHeight: '1.6' }}><strong>Costi:</strong> {product.costs}</p>
+      <p style={{ fontSize: '1.5rem', lineHeight: '1.6' }}><strong>Come aprirlo:</strong> {product.howToOpen}</p>
+      <Link to="/" style={{ color: product.id === "2" ? "black" : "white", textDecoration: "underline", fontSize: "1.2rem" }}>Torna alla home</Link>
     </div>
   );
 };

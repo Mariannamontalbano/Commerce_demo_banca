@@ -397,86 +397,125 @@ height: 120px; /* Imposta l'altezza per fare spazio al like */
 .quadrante-button:hover {
   background-color: rgba(0, 0, 0, 0.9);
 }
-.pianificazione-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
+/* Immagine di copertura nell'header */
 .pianificazione-header-immagine {
   position: relative;
-  width: 100%; /* L'immagine occuperà tutta la larghezza */
-  height: 200px; /* Altezza fissa per la striscia */
-  margin-bottom: 20px; /* Spazio tra l'immagine e il contenuto sottostante */
-  overflow: hidden; /* Nasconde eventuali parti dell'immagine che escono dal contenitore */
+  width: 100%;
+  height: 300px;
 }
 
 .pianificazione-header-img {
-  width: 100%; /* L'immagine copre tutta la larghezza del contenitore */
-  height: 100%; /* L'immagine copre tutta l'altezza del contenitore */
-  object-fit: cover; /* Adatta l'immagine al contenitore senza distorsioni, ma potrebbe tagliare alcune parti */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .pianificazione-header-text {
   position: absolute;
-  top: 50%; /* Centra verticalmente il titolo */
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Centra orizzontalmente e verticalmente */
-  color: rgb(0, 0, 0); /* Colore del testo per contrastare con l'immagine */
-  font-size: 3rem; /* Imposta la dimensione del titolo */
-  font-weight: bold; /* Rende il titolo più visibile */
+  transform: translate(-50%, -50%);
+  color: white;
   text-align: center;
-  z-index: 10; /* Assicurati che il titolo sia sopra l'immagine */
 }
 
-.pianificazione-quadranti {
-  display: flex;
-  gap: 20px;
-  max-width: 900px;
+.pianificazione-header-text h1 {
+  font-size: 3rem;
+  margin: 0;
+  font-weight: bold;
 }
 
+/* Contenuto principale della pagina Pianificazione */
+.pianificazione-content {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pianificazione-content h2 {
+  font-size: 2rem;
+  margin-top: 40px;
+  color: #333;
+}
+
+.pianificazione-content p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Stile per i quadranti */
 .pianificazione-quadrante {
   display: flex;
-  flex-direction: row;
+  margin-top: 40px;
   align-items: center;
-  background: #f9f9f9;
+  border: 1px solid #ddd;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  width: 45%;
 }
 
-
-
-.quadrante-img {
-  width: 40%;
-  border-radius: 5px;
-}
-
-.quadrante-testo {
-  width: 60%;
-  padding-left: 15px;
+.pianificazione-quadrante img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 20px;
 }
 
 .quadrante-testo h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  margin: 0;
+  color: #333;
 }
 
 .quadrante-testo p {
   font-size: 1rem;
-  color: #333;
+  color: #666;
 }
 
-.quadrante-link {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-  color: #0056b3;
-  text-decoration: none;
+/* Media query per dispositivi mobili */
+@media (max-width: 768px) {
+  .pianificazione-header-text h1 {
+    font-size: 2rem;
+  }
+
+  .pianificazione-content {
+    padding: 20px;
+  }
+
+  .pianificazione-quadrante {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pianificazione-quadrante img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .quadrante-testo h3 {
+    font-size: 1.3rem;
+  }
+
+  .quadrante-testo p {
+    font-size: 0.9rem;
+  }
 }
+/* Stile per il testo nel quadrante (quadrante-testo-pian) */
+.quadrante-testo-pian {
+  font-size: 1.2rem; /* Puoi regolare la dimensione del font */
+  color: #000000; /* Colore del testo */
+  font-style: italic; /* Esempio di stile per differenziarlo */
+  text-align: center; /* Centra il testo */
+  margin-top: 10px; /* Distanza tra il titolo e il testo */
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 768px) {
+  .quadrante-testo-pian {
+    font-size: 1rem; /* Adatta la dimensione del font per dispositivi più piccoli */
+  }
+}
+
 
 /* Stile per la Hero Section */
 .hero {
@@ -736,4 +775,71 @@ height: 120px; /* Imposta l'altezza per fare spazio al like */
     flex: none;
     width: 100%;
   }
+}
+.servizi-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fefeff; /* Colore di sfondo */
+}
+
+.cover-image {
+  width: 100%;
+  height: 60vh; /* Ridotto l'altezza della copertura al 60% della finestra */
+  position: relative;
+}
+
+.cover-img {
+  width: 100%;
+  height: 100%;  /* Copre tutta l'altezza */
+  object-fit: cover; /* L'immagine copre tutto lo spazio senza distorsioni */
+}
+
+.title {
+  position: absolute;
+  top: 20%; /* Posiziona il titolo a circa il 20% della parte superiore dell'immagine */
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  font-size: 3rem; /* Puoi cambiare la dimensione in base alle tue necessità */
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(238, 237, 237, 0.6); /* Per dare un effetto di contrasto al titolo */
+}
+
+.servizi-cards {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+  flex-wrap: wrap; /* Consente alle card di andare a capo se non c'è spazio sufficiente */
+  justify-content: center; /* Centra le card orizzontalmente */
+}
+
+.servizi-card {
+  background-color: rgba(4, 13, 133, 0.315);
+  padding: 32px; /* Aumentato il padding interno per dare più spazio alla card */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 400px; /* Aumentato la larghezza della card */
+  height: 300px; /* Puoi regolare l'altezza a piacere */
+}
+
+.card-title {
+  font-size: 2.5srem; /* Aumentato la dimensione del titolo della card */
+  font-weight: bold;
+}
+
+.card-desc {
+  color: #000000;
+  font-size: 1.5rem; /* Aumentato la dimensione del testo per la descrizione */
+  padding: 0 16px;
+  margin-top: 12px;
+}
+
+.card-link {
+  color: #3c89d1;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-top: 16px;
 }

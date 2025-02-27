@@ -40,7 +40,7 @@ function Pianificazione() {
           </div>
           </div>
 
-{/* Quadrante 2 */}
+{/* Quadrante 3 */}
 <div className="pianificazione-quadrante ">
   <img src="/pian.4.png" alt="Proteggere il futuro e la serenità della tua famiglia" className="quadrante-img" />
   <div className="quadrante-testo-pian">

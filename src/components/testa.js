@@ -1,14 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext'; // ✅ Importa il contesto
+import { AuthContext } from '../context/AuthContext';
 import '../global.css';
 
 function Header() {
-  const { user, logout } = useContext(AuthContext); // ✅ Prendi user e logout dal contesto
+  const { isLoggedIn, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // 👇 Stato interno per forzare il re-render
+  const [showLogout, setShowLogout] = useState(isLoggedIn);
+
+  useEffect(() => {
+    setShowLogout(isLoggedIn); // si aggiorna quando cambia il login
+  }, [isLoggedIn]);
+
   const handleLogout = () => {
-    logout(); // ✅ Usa il logout centralizzato
+    logout();
     navigate('/accessoarea');
   };
 
@@ -30,7 +37,7 @@ function Header() {
           <li><Link to="/recensioni">Recensioni</Link></li>
           <li><Link to="/apriconto" className="highlighted-link">Apri il conto</Link></li>
 
-          {user ? (
+          {showLogout ? (
             <>
               <li><Link to="/dashboard" className="highlighted-link">Dashboard</Link></li>
               <li>

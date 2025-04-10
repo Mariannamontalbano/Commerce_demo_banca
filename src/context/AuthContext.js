@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -13,9 +14,12 @@ export const AuthProvider = ({ children }) => {
       try {
         const decoded = jwtDecode(token);
         setUser(decoded);
+        setIsLoggedIn(true);
       } catch (err) {
         console.error('Token non valido:', err);
         localStorage.removeItem('token');
+        setUser(null);
+        setIsLoggedIn(false);
       }
     }
   }, []);
@@ -26,6 +30,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('token', res.data.token);
       const decoded = jwtDecode(res.data.token);
       setUser(decoded);
+      setIsLoggedIn(true);
     } catch (err) {
       throw new Error('Credenziali non valide');
     }
@@ -37,6 +42,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('token', res.data.token);
       const decoded = jwtDecode(res.data.token);
       setUser(decoded);
+      setIsLoggedIn(true);
     } catch (err) {
       throw new Error('Errore durante la registrazione');
     }
@@ -45,10 +51,11 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null);
+    setIsLoggedIn(false);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
+    <AuthContext.Provider value={{ user, isLoggedIn, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

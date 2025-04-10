@@ -1,15 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '../services/api';
 import '../global.css';
 
 const Accesso = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      alert('Per favore, inserisci sia email che password.');
+      return;
+    }
+
+    try {
+      console.log('📩 Email inviata:', email);
+      console.log('🔑 Password inviata:', password);
+
+      const res = await api.post('/auth/login', { email, password });
+
+      localStorage.setItem('token', res.data.token);
+
+      alert('Login effettuato con successo!');
+      navigate('/dashboard');
+    } catch (err) {
+      console.error('❌ Errore durante l’accesso:', err.response?.data || err.message);
+      alert(err.response?.data?.error || 'Email o password errati.');
+    }
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
       <h1>Accesso area clienti</h1>
       <div style={{ width: '300px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
-        {/* Campo per il nome utente */}
         <input
-          type="text"
-          placeholder="Nome utente"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           style={{
             padding: '10px',
             fontSize: '16px',
@@ -17,10 +46,11 @@ const Accesso = () => {
             border: '1px solid #ccc',
           }}
         />
-        {/* Campo per la password */}
         <input
           type="password"
           placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           style={{
             padding: '10px',
             fontSize: '16px',
@@ -28,8 +58,8 @@ const Accesso = () => {
             border: '1px solid #ccc',
           }}
         />
-        {/* Pulsante di accesso */}
         <button
+          onClick={handleLogin}
           style={{
             padding: '10px',
             fontSize: '16px',
@@ -39,7 +69,6 @@ const Accesso = () => {
             color: '#fff',
             cursor: 'pointer',
           }}
-          onClick={() => alert('Accesso eseguito!')}
         >
           Accedi
         </button>
